@@ -1,0 +1,68 @@
+openapi: 3.0.0
+info:
+  title: Url Shortener
+  contact: {}
+  version: "1.0"
+servers:
+  - url: https://url-shortener-wjmv.onrender.com
+    variables: {}
+paths:
+  /api/short:
+    post:
+      tags:
+        - Shorten
+      summary: mainUrl post
+      operationId: mainUrlpost
+      parameters: []
+      requestBody:
+        description: ""
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: "#/components/schemas/mainUrlpostRequest"
+                - example:
+                    mainUrl: https://github.com/Abhishekdx300/Url-Shortener-Backend
+            example:
+              mainUrl: https://github.com/Abhishekdx300/Url-Shortener-Backend
+        required: true
+      responses:
+        "200":
+          description: ""
+          headers: {}
+      deprecated: false
+      security: []
+  /{id}:
+    parameters:
+      - in: path
+        name: id
+        type: string
+        required: true
+        description: The UrlId.
+    get:
+      tags:
+        - Shorten
+      summary: goto mainUrl
+      operationId: gotomainUrl
+      parameters: []
+      responses:
+        "200":
+          description: ""
+          headers: {}
+      deprecated: false
+      security: []
+components:
+  schemas:
+    mainUrlpostRequest:
+      title: mainUrlpostRequest
+      required:
+        - mainUrl
+      type: object
+      properties:
+        mainUrl:
+          type: string
+      example:
+        mainUrl: https://github.com/Abhishekdx300/Url-Shortener-Backend
+tags:
+  - name: Shorten
+    description: ""
