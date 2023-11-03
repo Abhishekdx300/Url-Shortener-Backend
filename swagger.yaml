@@ -7,7 +7,7 @@ servers:
   - url: https://url-shortener-wjmv.onrender.com
     variables: {}
 paths:
-  /api/short:
+  /api/v1/short:
     post:
       tags:
         - Shorten
@@ -32,7 +32,7 @@ paths:
           headers: {}
       deprecated: false
       security: []
-  /{id}:
+  /api/v1/{id}:
     parameters:
       - in: path
         name: id
