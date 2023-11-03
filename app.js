@@ -9,7 +9,6 @@ import connectDB from "./Db/connect.js";
 import shortenRouter from "./routes/url.js";
 import swaggerUI from "swagger-ui-express";
 import YAML from "yamljs";
-import { redirect } from "./controllers/url.js";
 const swaggerDocument = YAML.load("./swagger.yaml");
 
 app.use(express.urlencoded({ extended: true }));
@@ -24,8 +23,7 @@ app.get("/", (req, res) => {
 app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerDocument));
 
 //routes
-app.use("/api", shortenRouter);
-app.use("/:id", redirect);
+app.use("/api/v1", shortenRouter);
 
 const port = process.env.PORT || 3000;
 const start = async () => {
